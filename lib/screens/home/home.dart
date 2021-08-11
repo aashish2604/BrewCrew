@@ -26,7 +26,6 @@ class Home extends StatelessWidget {
           context: context,
           builder: (context) {
             return Container(
-                padding: EdgeInsets.all(20),
                 child: Provider(
                   create: (_) => UserModel(uid: user!.uid),
                   child: FormSettings(),
@@ -41,24 +40,36 @@ class Home extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Color(0xFFDCC7C0),
         appBar: AppBar(
-          title: Text('Home'),
-          backgroundColor: Colors.brown[800],
+          title: Text('Brew Crew',style: TextStyle(color: Colors.black),),
+          backgroundColor: Colors.brown[300],
           actions: [
             TextButton.icon(onPressed: ()async{
               await _auth.signOut();
             },
-                icon: Icon(Icons.power_settings_new, color: Colors.white,),
-                label: Text('Logout',style: TextStyle(color: Colors.white),)
+                icon: Icon(Icons.power_settings_new, color: Colors.black,),
+                label: Text('Logout',style: TextStyle(color: Colors.black),)
             ),
           ],
         ),
-        body: BrewList(),
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/coffee_home.jpeg'),
+                fit: BoxFit.fill,
+            ),
+          ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 5.0),
+              child: BrewList(),
+            )
+        ),
+
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             _showSettingPanel();
           },
-          backgroundColor: Colors.brown[900],
-          child:Icon(Icons.settings),
+          backgroundColor: Colors.brown[100],
+          child:Icon(Icons.settings,color: Colors.black),
 
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:brew_crew/model/brew_model.dart';
+import 'package:brew_crew/services/loading.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,9 +32,13 @@ class _BrewListState extends State<BrewList> {
               padding: EdgeInsets.only(top: 2),
               child: Card(
                 child: ListTile(
-                  leading: CircleAvatar(radius: 20,backgroundColor: Colors.brown[brews[index].strength],),
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage('assets/images/coffee_icon.png'),
+                    radius: 20,
+                    backgroundColor: Colors.brown[brews[index].strength],
+                  ),
                   title: Text(brews[index].name),
-                  subtitle: Text('You prefer ${brews[index].sugar} teaspoons of sugar'),
+                  subtitle: Text('You prefer ${brews[index].sugar} teaspoon(s) of sugar'),
                 ),
               ),
 
@@ -41,6 +46,6 @@ class _BrewListState extends State<BrewList> {
           }
       );
     }
-    else return Scaffold(body: Text('Some error occurred!'));
+    else return Loading();
   }
 }
