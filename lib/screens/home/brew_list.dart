@@ -16,28 +16,31 @@ class _BrewListState extends State<BrewList> {
   Widget build(BuildContext context) {
     final brews = Provider.of<List<BrewModel>?>(context);
     
-    brews!.forEach((element) {
-      print(element.name);
-      print(element.sugar);
-      print(element.strength);
-    });
+    // brews!.forEach((element) {
+    //   print(element.name);
+    //   print(element.sugar);
+    //   print(element.strength);
+    // });
 
     //building a list view for all the entries received in brews via the BrewModel class
-    return ListView.builder(
-        itemCount: brews.length,
-        itemBuilder: (context,index){
-          return Padding(
-            padding: EdgeInsets.only(top: 2),
-            child: Card(
-              child: ListTile(
-                leading: CircleAvatar(radius: 20,backgroundColor: Colors.brown[brews[index].strength],),
-                title: Text(brews[index].name),
-                subtitle: Text('You prefer ${brews[index].sugar} teaspoons of sugar'),
+    if (brews!=null) {
+      return ListView.builder(
+          itemCount: brews.length,
+          itemBuilder: (context,index){
+            return Padding(
+              padding: EdgeInsets.only(top: 2),
+              child: Card(
+                child: ListTile(
+                  leading: CircleAvatar(radius: 20,backgroundColor: Colors.brown[brews[index].strength],),
+                  title: Text(brews[index].name),
+                  subtitle: Text('You prefer ${brews[index].sugar} teaspoons of sugar'),
+                ),
               ),
-            ),
 
-          );
-        }
-    );
+            );
+          }
+      );
+    }
+    else return Scaffold(body: Text('Some error occurred!'));
   }
 }

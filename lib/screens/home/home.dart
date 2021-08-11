@@ -19,13 +19,19 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
 
     //This is responsible for displaying the bottom Sheet on clicking the settings button
-    void _showSettingPanel(){
-      showModalBottomSheet(context: context, builder: (context){
-        return Container(
-          padding: EdgeInsets.all(20),
-          child: FormSettings(),
-        );
-      });
+    final user = Provider.of<UserModel?>(context);
+
+    void _showSettingPanel() {
+      showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return Container(
+                padding: EdgeInsets.all(20),
+                child: Provider(
+                  create: (_) => UserModel(uid: user!.uid),
+                  child: FormSettings(),
+                ));
+          });
     }
 
     return StreamProvider<List<BrewModel>?>.value(
