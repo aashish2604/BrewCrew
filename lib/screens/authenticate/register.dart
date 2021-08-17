@@ -24,6 +24,7 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return loading? Loading():Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(image: AssetImage('assets/images/coffee_settings_form.png'),

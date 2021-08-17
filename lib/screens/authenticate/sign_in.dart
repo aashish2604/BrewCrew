@@ -24,6 +24,7 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return loading? Loading() : Scaffold(
+      resizeToAvoidBottomInset: false,
       //backgroundColor: Color(0xFFDCC7C0),
       body: Container(
         decoration: BoxDecoration(
