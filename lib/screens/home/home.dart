@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:brew_crew/model/brew_model.dart';
 import 'package:brew_crew/model/user_model.dart';
 import 'package:brew_crew/screens/home/brew_list.dart';

@@ -31,6 +31,7 @@ class _BrewListState extends State<BrewList> {
             return Padding(
               padding: EdgeInsets.only(top: 2),
               child: Card(
+                color: Colors.white60,
                 child: ListTile(
                   leading: CircleAvatar(
                     backgroundImage: AssetImage('assets/images/coffee_icon.png'),
